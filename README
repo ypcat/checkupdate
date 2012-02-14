@@ -1,0 +1,19 @@
+dependency:
+    apache2 with mod_wsgi
+    python2.5+(?)
+    web.py
+    sendmail(?)
+
+add to httpd.conf for apache2:
+
+    WSGIScriptAlias /ypcat /home/ypcat/cgi-bin/index.py
+    AddType text/html .py
+    <Directory "/home/ypcat/cgi-bin">
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+the following variables need to be changed:
+* dbpath, logpath, and sender in checkupdate.py
+* path in notify.py
+
